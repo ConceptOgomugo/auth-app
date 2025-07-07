@@ -9,15 +9,16 @@ const saltRounds = 10;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "pantravels",
-  password: "Ococ(2008)//",
-  port: 5432,
-});
-db.connect();
+import dotenv from 'dotenv';
+dotenv.config();
 
+import pkg from 'pg';
+const { Pool } = pkg;
+
+const db = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false } // Required by Render
+});
 
 app.get("/", (req, res) => {
   res.render("home.ejs");
