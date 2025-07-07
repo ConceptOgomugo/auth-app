@@ -46,7 +46,7 @@ app.post("/register", async (req, res) => {
             "INSERT INTO admin_user (email, password) VALUES ($1, $2)",
             [email, hash]
           );
-          res.redirect('http://localhost:5000/');
+          res.redirect('https://main-app-qq2y.onrender.com/');
         }
       });
     }
