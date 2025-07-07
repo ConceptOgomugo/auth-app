@@ -55,7 +55,7 @@ app.post("/register", async (req, res) => {
           });
 
           // ✅ Redirect to main app with token in query param
-          res.redirect(`https://main-app-qq2y.onrender.com?token=${token}`);
+          res.redirect(`https://main-app-qq2y.onrender.com${token}`);
         }
       });
     }
@@ -91,7 +91,7 @@ app.post("/login", async (req, res) => {
             });
 
             // ✅ Redirect to main app with the token
-            res.redirect(`https://main-app-qq2y.onrender.com?token=${token}`);
+            res.redirect(`https://main-app-qq2y.onrender.com${token}`);
           } else {
             res.send("Incorrect password");
           }
