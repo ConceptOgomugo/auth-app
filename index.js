@@ -49,13 +49,9 @@ app.post("/register", async (req, res) => {
             [email, hash]
           );
 
-          // 🔐 Create JWT
-          const token = jwt.sign({ email }, process.env.JWT_SECRET, {
-            expiresIn: "1h",
-          });
 
           // ✅ Redirect to main app with token in query param
-          res.redirect(`https://main-app-qq2y.onrender.com${token}`);
+          res.redirect(`https://main-app-qq2y.onrender.com`);
         }
       });
     }
@@ -91,7 +87,7 @@ app.post("/login", async (req, res) => {
             });
 
             // ✅ Redirect to main app with the token
-            res.redirect(`https://main-app-qq2y.onrender.com${token}`);
+            res.redirect(`https://main-app-qq2y.onrender.com/?token=${token}`);
           } else {
             res.send("Incorrect password");
           }
